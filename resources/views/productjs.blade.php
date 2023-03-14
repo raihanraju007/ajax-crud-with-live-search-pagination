@@ -14,21 +14,44 @@
                     let name = $('#name').val();
                     let price = $('#price').val();
                     // console.log(name+price);
+                    // alert(name + price);
 
                     $.ajax({
-                        url:"{{ route('add.product') }}"
-                        method:'post',
-                        data:{name:name,price:price},
+                        url:"{{ route('add.product') }}",
+                        method:'POST',
+                        data: {name:name, price:price},
                         success:function(res){
-
+                            if(res.status == 'success'){
+                                $('#addModal').modal('hide');
+                                $('#addProductForm')[0].reset();
+                            }
                         },
                         error:function(err){
                             let error = err.responseJSON;
                             $.each(error.errors,function(index, value){
-                                $('.errMessaageContainer').append('<span class="text-danger">'+value+</span>'+'<br>);
+                                $('.errMessaageContainer').append('<span class="text-danger">' + value + '</span>' + '<br>');
                             });
                         }
                     });
+
+
+                    //      $.ajax('{{ route('add.product') }}', {
+                    //     type: 'POST',  // http method
+                    //     data: { name: name, price:price },  // data to submit
+                    //     success: function (res) {
+                            
+                    //     },
+                    //     error: function (err) {
+                    //         let error = err.responseJSON;
+                    //         $.each(error.errors,function(index, value){
+                    //             // alert(value);
+                    //             $('.errMessaageContainer').append('<span class="text-danger">' + value + '</span>' + '<br>');
+                    //         });
+                    //     }
+                    // });
+
+
+
                 })
             });
         </script>
