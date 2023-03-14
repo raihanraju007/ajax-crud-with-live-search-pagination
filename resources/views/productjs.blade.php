@@ -24,6 +24,7 @@
                             if(res.status == 'success'){
                                 $('#addModal').modal('hide');
                                 $('#addProductForm')[0].reset();
+                                $('.table').load(location.href + ' .table');
                             }
                         },
                         error:function(err){

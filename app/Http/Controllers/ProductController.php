@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function product(){
-        return view('product');
+        $products = Product::latest()->paginate(5);
+        return view('product',compact('products'));
     }
+
     public function addProduct(Request $request){
         $request->validate(
             [
