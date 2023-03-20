@@ -35,24 +35,17 @@
                         }
                     });
 
-
-                    //      $.ajax('{{ route('add.product') }}', {
-                    //     type: 'POST',  // http method
-                    //     data: { name: name, price:price },  // data to submit
-                    //     success: function (res) {
-                            
-                    //     },
-                    //     error: function (err) {
-                    //         let error = err.responseJSON;
-                    //         $.each(error.errors,function(index, value){
-                    //             // alert(value);
-                    //             $('.errMessaageContainer').append('<span class="text-danger">' + value + '</span>' + '<br>');
-                    //         });
-                    //     }
-                    // });
-
-
-
                 })
+                // Update form
+
+                $(document).on('click','.update_product_form',function(){
+                    let id      = $(this).data('id');
+                    let name    = $(this).data('name');
+                    let price   = $(this).data('price');
+
+                    $('#up_id').val(id);
+                    $('#up_name').val(name);
+                    $('#up_price').val(price);
+                });
             });
         </script>
